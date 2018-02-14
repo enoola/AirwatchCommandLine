@@ -30,7 +30,7 @@ use \PhPeteur\AirwatchCommandLine\Commands\MDMDeviceComplianceDetailsSearchComma
 use \PhPeteur\AirwatchCommandLine\Commands\MDMComplianceAttributesOGComplianceAttrSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\MDMDevicesAppStatusSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\MDMDeviceEventLogSearchCommand;
-#use \PhPeteur\AirwatchCommandLine\Commands\MDMDeviceGPSSearchCommand;
+use \PhPeteur\AirwatchCommandLine\Commands\MDMDeviceGPSSearchCommand;
 #use \PhPeteur\AirwatchCommandLine\Commands\MDMDevicesBulkGPSSearchCommand;
 #use \PhPeteur\AirwatchCommandLine\Commands\MDMDevicesBulkDeviceSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\MAMAppsGroupSearchCommand;
@@ -94,7 +94,7 @@ $application->add(new MDMDeviceComplianceDetailsSearchCommand( $cfg ));
 $application->add(new MDMComplianceAttributesOGComplianceAttrSearchCommand( $cfg ));
 $application->add(new MDMDevicesAppStatusSearchCommand( $cfg ));
 $application->add(new MDMDeviceEventLogSearchCommand( $cfg ));
-#$application->add(new MDMDeviceGPSSearchCommand( $cfg ));
+$application->add(new MDMDeviceGPSSearchCommand( $cfg ));
 #$application->add(new MDMDevicesBulkGPSSearchCommand( $cfg ));
 #$application->add(new MDMDevicesBulkDeviceSearchCommand( $cfg ));
 $application->add(new MAMAppsGroupSearchCommand( $cfg ));
