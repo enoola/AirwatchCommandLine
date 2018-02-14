@@ -23,7 +23,7 @@ class MDMProductsSearchCommand extends AirwatchCmd
     {
         $this->_oAW = new AirwatchMDMProductsSearch( $this->_config );
         if (is_null( $this->_oAW) )
-            throw new AirwatchCmdException('unable to create AirwatchMDMProductsSearch object within'.__CLASS__,42);
+            throw new AirwatchCmdException('Unable to create AirwatchMDMProductsSearch object within'.__CLASS__,42);
 
         $this->setName('mdm-products-search');
         if (! is_null ( $this->_oAW->getPossibleSearchParams() ) ) {
@@ -69,33 +69,4 @@ class MDMProductsSearchCommand extends AirwatchCmd
 
     }
 
-    /*
-    protected function run_search($arSearchParams, $output ) : array
-    {
-        $resquery = $this->_oAW->Search($arSearchParams) ;
-
-        //var_dump($resquery);
-        //exit;
-        $arFieldsToDisplay = $this->_oAW->getDefaultFieldsToShow();
-
-        if (!is_null($resquery['data'])) {
-            $table = new Table($output);
-
-            $table->setHeaders($arFieldsToDisplay);
-            foreach ($resquery['data'][self::FIELD_TO_EXTRACT_FROM_DATA_RESULTS] as $arOneApp)
-            {
-                $arOneAppWithInterestingFields = [];
-                foreach ($arFieldsToDisplay as $fieldName) {
-                    $arOneAppWithInterestingFields[$fieldName] = (array_key_exists($fieldName, $arOneApp) ? $arOneApp[$fieldName] : "N/A");
-                }
-                $arOneAppWithInterestingFields['ID'] = $arOneApp['ID']['Value'];
-                $table->addRow($arOneAppWithInterestingFields);
-            }
-            $table->render();
-        } else {
-            $output->writeln('<red>Nothing to display</red>');
-        }
-
-        return ($resquery);
-    }*/
 }
