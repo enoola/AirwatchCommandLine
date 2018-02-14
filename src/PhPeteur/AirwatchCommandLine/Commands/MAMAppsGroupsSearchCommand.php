@@ -22,7 +22,7 @@ class MAMAppsGroupsSearchCommand extends AirwatchCmd
     {
         $this->_oAW = new AirwatchMAMAppsGroupsSearch($this->_config);
         if (is_null($this->_oAW))
-            throw new AirwatchCmdException('unable to create AirwatchMAMAppsGroupsSearch object within' . __CLASS__, 42);
+            throw new AirwatchCmdException('Unable to create AirwatchMAMAppsGroupsSearch object within' . __CLASS__, 42);
 
         $this->setName('mam-appsgroups-search');
         if (!is_null($this->_oAW->getPossibleSearchParams())) {
