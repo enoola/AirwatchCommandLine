@@ -22,7 +22,7 @@ class SystemUsersSearchCommand extends AirwatchCmd
     {
         $this->_oAW = new AirwatchSystemUsersSearch( $this->_config );
         if (is_null( $this->_oAW))
-            die (">>unable to create AirwatchMDMDevicesSearch object :/");
+            die ("Unable to create AirwatchMDMDevicesSearch object :/");
 
         $this->setName('system-users-search');
         foreach ($this->_oAW->getPossibleSearchParams() as $param => $pdescription)

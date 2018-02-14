@@ -15,7 +15,7 @@ use Symfony\Component\Console\Application;
 //use PhPeteur\AirwatchSystemUsers;
 use \PhPeteur\AirwatchCommandLine\Commands\SystemInfoCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\SystemUsersSearchCommand;
-#use PhPeteur\Commands\MAMAppsSearchCommand;
+use PhPeteur\AirwatchCommandLine\Commands\MAMAppsSearchCommand;
 #use PhPeteur\Commands\MAMAppsPlaystoreSearchCommand;
 #use PhPeteur\Commands\MDMDevicesSearchCommand;
 #use \PhPeteur\Commands\MDMSmartGroupsSearchCommand;
@@ -79,7 +79,7 @@ $application = new Application("Airwatch command line tool");
 
 $application->add(new SystemInfoCommand( $cfg ) );
 $application->add(new SystemUsersSearchCommand( $cfg ) );
-#$application->add(new MAMAppsSearchCommand( $cfg ) );
+$application->add(new MAMAppsSearchCommand( $cfg ) );
 #$application->add(new MAMAppsPlaystoreSearchCommand( $cfg ) );
 #$application->add(new MDMDevicesSearchCommand( $cfg ) );
 #$application->add(new MDMSmartGroupsSearchCommand( $cfg ) );
