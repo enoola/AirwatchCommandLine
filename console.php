@@ -56,7 +56,7 @@ use \PhPeteur\AirwatchCommandLine\Commands\MDMDevicesSecurityInformationsSearchC
 use \PhPeteur\AirwatchCommandLine\Commands\MDMDevicesNetworkInformationsSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\MDMCompliancePoliciesSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\MDMDeviceCustomAttributesSearchCommand;
-#use \PhPeteur\AirwatchCommandLine\Commands\MDMDeviceCustomAttributesChangeReportSearchCommand;
+use \PhPeteur\AirwatchCommandLine\Commands\MDMDeviceCustomAttributesChangeReportSearchCommand;
 #//use \PhPeteur\Commands\MDMRelayServersSearchCommand;
 #use \PhPeteur\AirwatchCommandLine\Commands\SystemUserSearchCommand;
 #use \PhPeteur\AirwatchCommandLine\Commands\SystemUsersEnrolledDevicesSearchCommand;
@@ -120,7 +120,7 @@ $application->add(new MDMDevicesSecurityInformationsSearchCommand( $cfg ));
 $application->add(new MDMDevicesNetworkInformationsSearchCommand( $cfg ));
 $application->add(new MDMCompliancePoliciesSearchCommand( $cfg ));
 $application->add(new MDMDeviceCustomAttributesSearchCommand( $cfg ));
-#$application->add(new MDMDeviceCustomAttributesChangeReportSearchCommand( $cfg ));
+$application->add(new MDMDeviceCustomAttributesChangeReportSearchCommand( $cfg ));
 #$application->add(new SystemUsersEnrolledDevicesSearchCommand( $cfg ));
 #//$application->add(new MDMRelayServersSearchCommand( $cfg ));
 #$application->add(new SystemUserSearchCommand( $cfg ));
