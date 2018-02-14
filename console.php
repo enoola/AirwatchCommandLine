@@ -60,7 +60,7 @@ use \PhPeteur\AirwatchCommandLine\Commands\MDMDeviceCustomAttributesChangeReport
 use \PhPeteur\AirwatchCommandLine\Commands\SystemUsersEnrolledDevicesSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\SystemUserSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\MDMProductFailedSearchCommand;
-#use \PhPeteur\AirwatchCommandLine\Commands\MDMProductInProgressSearchCommand;
+use \PhPeteur\AirwatchCommandLine\Commands\MDMProductInProgressSearchCommand;
 #use \PhPeteur\AirwatchCommandLine\Commands\MDMProductAssignedSearchCommand;
 #//use \PhPeteur\Commands\MDMRelayServersSearchCommand;
 
@@ -124,9 +124,9 @@ $application->add(new MDMDeviceCustomAttributesChangeReportSearchCommand( $cfg )
 $application->add(new SystemUsersEnrolledDevicesSearchCommand( $cfg ));
 $application->add(new SystemUserSearchCommand( $cfg ));
 $application->add(new MDMProductFailedSearchCommand( $cfg ));
-#//$application->add(new MDMRelayServersSearchCommand( $cfg ));
-#$application->add(new MDMProductInProgressSearchCommand( $cfg ));
+$application->add(new MDMProductInProgressSearchCommand( $cfg ));
 #$application->add(new MDMProductAssignedSearchCommand( $cfg ));
+#//$application->add(new MDMRelayServersSearchCommand( $cfg ));
 
 //MAMAppsPlaystoreSearchCommand
 // ... register commands
