@@ -4,25 +4,17 @@
     "symfony/finder": "^4.0",
     "symfony/yaml": "^4.0",
     "symfony/console": "^4.0",
-    "enoola/airwatchrestwebservicesclientphplib": "dev-master"
+    "enoola/airwatchrestwebservicesclientlib": "dev-master"
   },
   "repositories": [
-  {
-    "type": "package",
-    "package": {
-      "name": "enoola/airwatchrestwebservicesclientphplib",
-      "version": "dev-master",
-      "source": {
-        "url": "https://github.com/enoola/AirwatchRESTWebServicesClientPhPLib.git",
-        "type": "git",
-        "reference": "master"
-      },
-      "autoload": {
-        "psr-0": {
-          "PhPeteur\\AirwatchWebservices\\Services": "src"
-        }
+      {
+        "url": "https://github.com/enoola/AirwatchRESTWebServicesClientLib.git",
+        "type": "git"
       }
-    }
+  ],
+  "autoload": {
+     "psr-4": {
+        "PhPeteur\\AirwatchCommandLine\\": "src/PhPeteur/AirwatchCommandLine"
+     }
   }
-  ]
 }

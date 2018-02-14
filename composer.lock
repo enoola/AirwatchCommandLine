@@ -4,23 +4,28 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8a9b8b6c5892f97698f4e2cf46cbb2df",
+    "content-hash": "a8d7edad675ac6d20186a8e7510517ff",
     "packages": [
         {
-            "name": "enoola/airwatchrestwebservicesclientphplib",
+            "name": "enoola/airwatchrestwebservicesclientlib",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/enoola/AirwatchRESTWebServicesClientPhPLib.git",
-                "reference": "master"
+                "url": "https://github.com/enoola/AirwatchRESTWebServicesClientLib.git",
+                "reference": "fc48bc65e268e4f6d6b5f36ebf9d03415d567cd5"
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.3",
+                "symfony/finder": "^4.0",
+                "symfony/yaml": "^4.0"
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "PhPeteur\\Services": "src"
+                "psr-4": {
+                    "PhPeteur\\AirwatchWebservices\\Services\\": "src/PhPeteur/AirwatchWebservices/Services"
                 }
             },
-            "time": "2018-02-13T14:04:40+00:00"
+            "time": "2018-02-14T09:24:27+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -492,7 +497,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "enoola/airwatchrestwebservicesclientphplib": 20
+        "enoola/airwatchrestwebservicesclientlib": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
