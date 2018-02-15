@@ -62,6 +62,8 @@ use \PhPeteur\AirwatchCommandLine\Commands\SystemUserSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\MDMProductFailedSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\MDMProductInProgressSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\MDMProductAssignedSearchCommand;
+use PhPeteur\AirwatchCommandLine\Commands\MDMProductsReprocessActionCommand;
+
 #//use \PhPeteur\Commands\MDMRelayServersSearchCommand;
 
 
@@ -126,6 +128,7 @@ $application->add(new SystemUserSearchCommand( $cfg ));
 $application->add(new MDMProductFailedSearchCommand( $cfg ));
 $application->add(new MDMProductInProgressSearchCommand( $cfg ));
 $application->add(new MDMProductAssignedSearchCommand( $cfg ));
+$application->add(new MDMProductsReprocessActionCommand( $cfg ));
 #//$application->add(new MDMRelayServersSearchCommand( $cfg ));
 
 //MAMAppsPlaystoreSearchCommand
