@@ -29,7 +29,7 @@ class MDMDevicesBulkSettingsSearchCommand extends AirwatchCmd
 
         $this->setName('mdm-devices-bulksettings-search');
 
-        $this->setDescription('Retrieves the values for bulk management settings done on the AirWatch Console.');
+        $this->setDescription(AirwatchMDMDevicesBulkSettingsSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

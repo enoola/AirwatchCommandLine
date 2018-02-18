@@ -8,6 +8,7 @@
 
 namespace PhPeteur\AirwatchCommandLine\Commands;
 
+use PhPeteur\AirwatchWebservices\Services\AirwatchMDMSmartGroupsSearch;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -37,7 +38,7 @@ class MDMSmartGroupSearchCommand extends AirwatchCmd
 
             }
         }
-        $this->setDescription('Retrieves the smart group details created in an organization group.');
+        $this->setDescription(AirwatchMDMSmartGroupSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

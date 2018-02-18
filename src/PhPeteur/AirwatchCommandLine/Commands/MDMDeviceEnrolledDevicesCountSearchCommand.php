@@ -36,7 +36,7 @@ class MDMDeviceEnrolledDevicesCountSearchCommand extends AirwatchCmd
             $this->addOption($param,null, InputOption::VALUE_REQUIRED, $pdescription);
         }
 
-        $this->setDescription('Retrieves count of all enrolled devices based on any or all of the OG ids, tag names, and devices.');
+        $this->setDescription(AirwatchMDMDeviceEnrolledDevicesCountSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

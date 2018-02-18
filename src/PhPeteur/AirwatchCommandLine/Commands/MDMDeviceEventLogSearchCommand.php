@@ -31,7 +31,7 @@ class MDMDeviceEventLogSearchCommand extends AirwatchCmd
             $this->addOption($param,null, InputOption::VALUE_REQUIRED, $pdescription);
         }
 
-        $this->setDescription('Retrieves the event log details of the device.');
+        $this->setDescription(AirwatchMDMDeviceEventLogSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

@@ -33,7 +33,7 @@ class SystemGroupRolesSearchCommand extends AirwatchCmd
                 $this->addOption($param, null, InputOption::VALUE_REQUIRED, $pdescription);
             }
         }
-        $this->setDescription('Retrieves the list of roles in an organization group that could be assigned to an AirWatch Console user.');
+        $this->setDescription(AirwatchSystemGroupRolesSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

@@ -35,7 +35,7 @@ class MDMDeviceInformationsSearchCommand extends AirwatchCmd
             $this->addOption($param,null, InputOption::VALUE_REQUIRED, $pdescription);
         }
 
-        $this->setDescription('Retrieves the details of a device identified by device Id.');
+        $this->setDescription(AirwatchMDMDeviceInformationsSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

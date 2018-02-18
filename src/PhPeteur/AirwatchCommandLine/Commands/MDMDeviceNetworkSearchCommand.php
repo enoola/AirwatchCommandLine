@@ -34,7 +34,7 @@ class MDMDeviceNetworkSearchCommand extends AirwatchCmd
             $this->addOption($param,null, InputOption::VALUE_REQUIRED, $pdescription);
         }
 
-        $this->setDescription('Functionality – Retrieves the network information of the device.');
+        $this->setDescription(AirwatchMDMDeviceNetworkSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

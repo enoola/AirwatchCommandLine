@@ -34,7 +34,7 @@ class MDMDevicesLiteSearchCommand extends AirwatchCmd
             $this->addOption($param,null, InputOption::VALUE_REQUIRED, $pdescription);
         }
 
-        $this->setDescription('Search results containing the devices and their product assignment information (Lite Version).');
+        $this->setDescription(AirwatchMDMDevicesLiteSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

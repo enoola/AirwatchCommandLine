@@ -24,16 +24,18 @@ class MAMAppsPlaystoreSearchCommand extends AirwatchCmd
         parent::configure();
         $this->setName('mam-apps-playstore-search')
             ->addArgument('appname', InputArgument::REQUIRED, 'appname to search in playstore')
-            ->setDescription("gives access to aw mam apps playstore search");
+            ->setDescription(AirwatchMAMAppsPlayStoreSearch::CLASS_SENTENCE_AIM);
 
         $this->_oAW = new AirwatchMAMAppsPlayStoreSearch( $this->_config );
+
     }
 
     protected function doRun(InputInterface $input, OutputInterface $output)
     {
-        $res = $this->_oAW->Search( $input->getArgument('appname') );
         if (is_null( $this->_oAW))
             die ("Unable to create AirwatchMAMAppsPlayStoreSearch object :/");
+        $res = $this->_oAW->Search( $input->getArgument('appname') );
+
 
         if (array_key_exists('Applications', $res['data']) )
         {

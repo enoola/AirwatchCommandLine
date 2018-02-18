@@ -29,7 +29,7 @@ class MDMComplianceAttributesOGComplianceAttrSearchCommand extends AirwatchCmd
         {
             $this->addOption($param,null, InputOption::VALUE_REQUIRED, $pdescription);
         }
-        $this->setDescription("Gets the list compliance attributes configured for an organizational group based on the vendor name.");
+        $this->setDescription(AirwatchMDMComplianceAttributesOrgGroupsComplianceAttributesSearch::CLASS_SENTENCE_AIM);
         parent::addGenericSearchOptions();
     }
 

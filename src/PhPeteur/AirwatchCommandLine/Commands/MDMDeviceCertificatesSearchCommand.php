@@ -33,7 +33,7 @@ class MDMDeviceCertificatesSearchCommand extends AirwatchCmd
             $this->addOption($param, null, InputOption::VALUE_REQUIRED, $pdescription);
         }
 
-        $this->setDescription('Retrieves the details of the certificates that are present on the device.');
+        $this->setDescription(AirwatchMDMDeviceCertificatesSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

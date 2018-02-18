@@ -33,7 +33,7 @@ class MDMDeviceAppsSearchCommand extends AirwatchCmd
 
         //We might want some specific argument handling
 
-        $this->setDescription('Retrieves the details of the applications that are present on the device.');
+        $this->setDescription(AirwatchMDMDeviceAppsSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

@@ -35,7 +35,7 @@ class MDMProductsReprocessActionCommand extends AirwatchCmd
         $this->addOption('ForceFlag', null, InputOption::VALUE_REQUIRED, $this->_oAW->getPossibleSearchParams()['ForceFlag']);
 
 
-        $this->setDescription('Initiates reprocessing of a product or product and device(s) by the policy engine. Supports a reprocess and a forced reprocess.');
+        $this->setDescription(AirwatchMDMProductsReprocessAction::CLASS_SENTENCE_AIM);
     }
 
     protected function doRun(InputInterface $input, OutputInterface $output) : array

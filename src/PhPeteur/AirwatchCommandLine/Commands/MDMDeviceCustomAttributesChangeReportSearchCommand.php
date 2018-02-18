@@ -31,7 +31,7 @@ class MDMDeviceCustomAttributesChangeReportSearchCommand extends AirwatchCmd
         {
             $this->addOption($param,null, InputOption::VALUE_REQUIRED, $pdescription);
         }
-        $this->setDescription("Searches for changes made to device custom attributes.");
+        $this->setDescription(AirwatchMDMDeviceCustomAttributesChangeReportSearch::CLASS_SENTENCE_AIM);
         parent::addGenericSearchOptions();
     }
 

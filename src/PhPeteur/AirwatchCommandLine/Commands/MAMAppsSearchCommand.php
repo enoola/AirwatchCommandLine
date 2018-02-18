@@ -32,7 +32,7 @@ class MAMAppsSearchCommand extends AirwatchCmd
         {
             $this->addOption($param,null, InputOption::VALUE_REQUIRED, $pdescription);
         }
-        $this->setDescription("gives access to aw mam apps search");
+        $this->setDescription(AirwatchMAMAppsSearch::CLASS_SENTENCE_AIM);
         parent::addGenericSearchOptions();
     }
 

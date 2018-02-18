@@ -34,7 +34,7 @@ class SystemGroupUsersSearchCommand extends AirwatchCmd
 
             }
         }
-        $this->setDescription('Retrieves the details of all the enrollment users in an organization group.');
+        $this->setDescription(AirwatchSystemGroupUsersSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

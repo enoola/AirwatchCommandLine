@@ -24,14 +24,14 @@ class MDMDevicesBulkGPSSearchCommand extends AirwatchCmd
     {
         $this->_oAW = new AirwatchMDMDevicesBulkGPSSearch( $this->_config );
         if (is_null( $this->_oAW))
-            die (">>unable to create AirwatchMDMDeviceInformationsSearch object :/");
+            die ("Unable to create AirwatchMDMDeviceInformationsSearch object :/");
 
         $this->setName('mdm-devices-gps-search');
 
         $this->addOption('searchby', null, InputOption::VALUE_REQUIRED, $this->_oAW->getPossibleSearchParams()['searchby'] );
         $this->addArgument('ids', InputArgument::REQUIRED, $this->_oAW->getPossibleSearchParams()['ids'] );
 
-        $this->setDescription('Retrieves the gps coordinate of a list of device identified by device Id.');
+        $this->setDescription(AirwatchMDMDevicesBulkGPSSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

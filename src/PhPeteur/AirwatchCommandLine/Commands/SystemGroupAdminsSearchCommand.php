@@ -35,7 +35,7 @@ class SystemGroupAdminsSearchCommand extends AirwatchCmd
 
             }
         }
-        $this->setDescription('Retrieves the details of all the console admin users in an organization group.');
+        $this->setDescription(AirwatchSystemGroupAdminsSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

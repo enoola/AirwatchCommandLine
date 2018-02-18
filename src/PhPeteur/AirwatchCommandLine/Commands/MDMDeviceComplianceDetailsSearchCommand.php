@@ -31,7 +31,7 @@ class MDMDeviceComplianceDetailsSearchCommand extends AirwatchCmd
         {
             $this->addOption($param,null, InputOption::VALUE_REQUIRED, $pdescription);
         }
-        $this->setDescription("Retrieves the details of the compliance policies that are present on a device.");
+        $this->setDescription(AirwatchMDMDeviceComplianceDetailsSearch::CLASS_SENTENCE_AIM);
         parent::addGenericSearchOptions();
     }
 

@@ -12,7 +12,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/enoola/AirwatchRESTWebServicesClientLib.git",
-                "reference": "a97ab3782ac7d0bb4c1c748609f1581d32c602b5"
+                "reference": "33e8242c96eaa813c8299ba29a0ffa7871ed6492"
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.3",
@@ -25,7 +25,7 @@
                     "PhPeteur\\AirwatchWebservices\\Services\\": "src/PhPeteur/AirwatchWebservices/Services"
                 }
             },
-            "time": "2018-02-15T07:32:14+00:00"
+            "time": "2018-02-18T16:34:47+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",

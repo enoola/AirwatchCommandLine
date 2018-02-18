@@ -34,7 +34,7 @@ class SystemUserSearchCommand extends AirwatchCmd
         {
             $this->addOption($param,null, InputOption::VALUE_REQUIRED, $pdescription);
         }
-        $this->setDescription("Retrieves enrollment user's details identified by the enrollment user Id.");
+        $this->setDescription(AirwatchSystemUserSearch::CLASS_SENTENCE_AIM);
         parent::addGenericSearchOptions();
     }
 

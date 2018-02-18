@@ -31,7 +31,7 @@ class MDMDeviceProfilesSearchCommand extends AirwatchCmd
             $this->addOption($param,null, InputOption::VALUE_REQUIRED, $pdescription);
         }
 
-        $this->setDescription('Retrieves the profile related information of the device.');
+        $this->setDescription(AirwatchMDMDeviceProfilesSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

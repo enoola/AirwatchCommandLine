@@ -20,9 +20,10 @@ class SystemInfoCommand extends AirwatchCmd
     protected function configure()
     {
        $this->setName("system-infos")
-       ->setDescription("gives airwatch instance informations");
+       ->setDescription(AirwatchSystemInfo::CLASS_SENTENCE_AIM);
 
        $this->_oAW = new AirwatchSystemInfo( $this->_config );
+
     }
 
     protected function doRun(InputInterface $input, OutputInterface $output){

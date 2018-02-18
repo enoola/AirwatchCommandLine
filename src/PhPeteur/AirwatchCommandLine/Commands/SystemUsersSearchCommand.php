@@ -29,7 +29,7 @@ class SystemUsersSearchCommand extends AirwatchCmd
         {
             $this->addOption($param,null, InputOption::VALUE_REQUIRED, $pdescription);
         }
-        $this->setDescription('Searches for the enrollment user details.');
+        $this->setDescription(AirwatchSystemUsersSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

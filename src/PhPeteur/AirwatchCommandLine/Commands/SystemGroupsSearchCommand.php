@@ -31,7 +31,7 @@ class SystemGroupsSearchCommand extends AirwatchCmd
                 $this->addOption($param, null, InputOption::VALUE_REQUIRED, $pdescription);
             }
         }
-        $this->setDescription('Searches for organizational groups (OG) using the query information provided.');
+        $this->setDescription(AirwatchSystemGroupsSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

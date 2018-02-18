@@ -34,7 +34,7 @@ class SystemUsersEnrolledDevicesSearchCommand extends AirwatchCmd
             $this->addOption($param,null, InputOption::VALUE_REQUIRED, $pdescription);
         }
 
-        $this->setDescription('Retrieves enrolled device details for the query information provided in the request.');
+        $this->setDescription(AirwatchSystemUsersEnrolledDevicesSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

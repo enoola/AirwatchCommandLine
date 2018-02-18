@@ -35,7 +35,7 @@ class MDMDeviceGPSSearchCommand extends AirwatchCmd
             $this->addOption($param,null, InputOption::VALUE_REQUIRED, $pdescription);
         }
 
-        $this->setDescription('Retrieves the gps coordinate of a device identified by device Id.');
+        $this->setDescription(AirwatchMDMDeviceGPSSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

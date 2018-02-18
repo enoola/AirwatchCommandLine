@@ -34,7 +34,7 @@ class MDMDeviceAdminAppsSearchCommand extends AirwatchCmd
             $this->addOption($param,null, InputOption::VALUE_REQUIRED, $pdescription);
         }
 
-        $this->setDescription('Retrieves admin applications details for the passed device ID.');
+        $this->setDescription(AirwatchMDMDeviceAdminAppsSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

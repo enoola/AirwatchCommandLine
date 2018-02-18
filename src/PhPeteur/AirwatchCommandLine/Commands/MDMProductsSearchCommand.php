@@ -30,7 +30,7 @@ class MDMProductsSearchCommand extends AirwatchCmd
                 $this->addOption($param, null, InputOption::VALUE_REQUIRED, $pdescription);
             }
         }
-        $this->setDescription('Searches for products using the query information provided.');
+        $this->setDescription(AirwatchMDMProductsSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

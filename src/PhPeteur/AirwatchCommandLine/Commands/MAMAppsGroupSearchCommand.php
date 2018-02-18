@@ -33,7 +33,7 @@ class MAMAppsGroupSearchCommand extends AirwatchCmd
                 $this->addOption($param, null, InputOption::VALUE_REQUIRED, $pdescription);
             }
         }
-        $this->setDescription('Searches for admins using the query information provided.');
+        $this->setDescription(AirwatchMAMAppsGroupSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

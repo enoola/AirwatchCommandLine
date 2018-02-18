@@ -30,7 +30,7 @@ class MAMAppsRemovalLogsSearchCommand extends AirwatchCmd
                 $this->addOption($param, null, InputOption::VALUE_REQUIRED, $pdescription);
             }
         }
-        $this->setDescription('Searches and retrieves removal logs for internal applications.');
+        $this->setDescription(AirwatchMAMAppsRemovalLogsSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

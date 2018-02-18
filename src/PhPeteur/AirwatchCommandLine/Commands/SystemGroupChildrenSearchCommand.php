@@ -35,8 +35,7 @@ class SystemGroupChildrenSearchCommand extends AirwatchCmd
 
             }
         }
-        $this->setDescription('Fetches the details of the given organization group as well as the details of all its child organizations
-groups.');
+        $this->setDescription(AirwatchSystemGroupChildrenSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

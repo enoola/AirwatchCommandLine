@@ -35,7 +35,7 @@ class MDMCompliancePoliciesSearchCommand extends AirwatchCmd
             $this->addOption($param,null, InputOption::VALUE_REQUIRED, $pdescription);
         }
 
-        $this->setDescription('Searches for the compliance policies with the search parameters passed.');
+        $this->setDescription(AirwatchMDMCompliancePoliciesSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

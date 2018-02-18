@@ -36,7 +36,7 @@ class MDMDeviceCustomAttributesSearchCommand extends AirwatchCmd
         {
             $this->addOption($param,null, InputOption::VALUE_REQUIRED, $pdescription);
         }
-        $this->setDescription("Searches for device custom attributes.");
+        $this->setDescription(AirwatchMDMDeviceCustomAttributesSearch::CLASS_SENTENCE_AIM);
         parent::addGenericSearchOptions();
     }
 

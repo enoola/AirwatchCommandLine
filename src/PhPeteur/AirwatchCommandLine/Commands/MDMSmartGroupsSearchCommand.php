@@ -8,6 +8,7 @@
 
 namespace PhPeteur\AirwatchCommandLine\Commands;
 
+use PhPeteur\AirwatchWebservices\Services\AirwatchMDMSmartGroups;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -31,7 +32,7 @@ class MDMSmartGroupsSearchCommand extends AirwatchCmd
                 $this->addOption($param, null, InputOption::VALUE_REQUIRED, $pdescription);
             }
         }
-        $this->setDescription('Searches for smartgroups using the query information provided.');
+        $this->setDescription(AirwatchMDMSmartGroupsSearch::CLASS_SENTENCE_AIM);
         parent::addGenericSearchOptions();
     }
 

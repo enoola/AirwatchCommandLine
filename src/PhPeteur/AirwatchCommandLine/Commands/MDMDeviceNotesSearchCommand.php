@@ -34,7 +34,7 @@ class MDMDeviceNotesSearchCommand extends AirwatchCmd
             $this->addOption($param, null, InputOption::VALUE_REQUIRED, $pdescription);
         }
 
-        $this->setDescription('Retrieves details of all the notes from the device.');
+        $this->setDescription(AirwatchMDMDeviceNotesSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }

@@ -33,7 +33,7 @@ class MDMDevicesBulkDeviceSearchCommand extends AirwatchCmd
         $this->addOption('searchby', null, InputOption::VALUE_REQUIRED, $this->_oAW->getPossibleSearchParams()['searchby'] );
         $this->addArgument('ids', InputArgument::REQUIRED, $this->_oAW->getPossibleSearchParams()['ids'] );
 
-        $this->setDescription('Retrieves information about multiple devices identified by the specified Id type.');
+        $this->setDescription(AirwatchMDMDevicesBulkDeviceSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }
