@@ -24,7 +24,7 @@ class MDMProductsReprocessActionCommand extends AirwatchCmd
         if (is_null( $this->_oAW))
             die ("Unable to create AirwatchMDMProductReprocessAction object :/");
 
-        $this->setName('mdm-product-reprocess');
+        $this->setName('mdm-products-reprocess');
 
         foreach ($this->_oAW->getPossibleSearchParams() as $param => $pdescription) {
             $this->addOption($param, null, InputOption::VALUE_REQUIRED, $pdescription);
@@ -43,8 +43,6 @@ class MDMProductsReprocessActionCommand extends AirwatchCmd
         $arInterestingParams = [];
         $clPossileParam = $this->_oAW->getPossibleSearchParams();
 
-
-
         foreach ($input->getOptions() as $optName => $optValue) {
             if (array_key_exists($optName, $clPossileParam ) ) {
                 if (!is_null( $optValue ) ) {
@@ -52,7 +50,6 @@ class MDMProductsReprocessActionCommand extends AirwatchCmd
                 }
             }
         }
-        //var_dump($input->getArguments('ids'));
 
         $arInterestingParams['DeviceIds'] = null;
         $arDevIds = explode(',',$input->getArgument('DeviceIds'));
@@ -61,21 +58,16 @@ class MDMProductsReprocessActionCommand extends AirwatchCmd
             $arFormattedDevIds[]= ['ID'=>$oneId];
         }
         $arInterestingParams['DeviceIds'] = $arFormattedDevIds;
+
         $arActionResponse = $this->_oAW->Action($arInterestingParams);
 
-        //something went wrong..
-        if (!array_key_exists('data', $arActionResponse)) {
-            $output->writeln('an error occured will stop : ');
-            var_dump($arActionResponse);
-            exit;
+        if (strcmp($arActionResponse['status'],'200 OK') == 0 ) {
+            $this->myoutput($output, parent::CMD_STATUS_OK, 'Product(s) List(s) ['.$input->getOption('ProductID').'] have been reprocessed for given devices ['.$input->getArgument('DeviceIds').'].');
         }
-        //if an exception is thrown we let it go
+        else {
+            $this->myoutput($output, parent::CMD_STATUS_KO, 'Error occured');
+        }
 
-        $arInterestingParams = ( count($arInterestingParams) > 0 ) ? $arInterestingParams : null;
-
-        $resquery = $this->run_search($arInterestingParams, $input);
-
-        //$output->writeln('Product: "'..'" with ID '""' had been reprocessed for device with ID '.');
-        return ( $resquery );
+        return ( $arActionResponse );
     }
 }
