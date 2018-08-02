@@ -63,9 +63,11 @@ use \PhPeteur\AirwatchCommandLine\Commands\MDMProductFailedSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\MDMProductInProgressSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\MDMProductAssignedSearchCommand;
 use PhPeteur\AirwatchCommandLine\Commands\MDMProductsReprocessActionCommand;
-
+use \PhPeteur\AirwatchCommandLine\Commands\MDMProductSearchCommand;
+use \PhPeteur\AirwatchCommandLine\Commands\MDMSmartGroupDevicesSearchCommand;
+use \PhPeteur\AirwatchCommandLine\Commands\SystemUserDeleteCommand;
 #//use \PhPeteur\Commands\MDMRelayServersSearchCommand;
-
+//use \PhPeteur\AirwatchCommandLine\Commands\AirwatchProdAppsInstalled;
 
 
 $configfile = __DIR__.'/config.yml';
@@ -129,6 +131,11 @@ $application->add(new MDMProductFailedSearchCommand( $cfg ));
 $application->add(new MDMProductInProgressSearchCommand( $cfg ));
 $application->add(new MDMProductAssignedSearchCommand( $cfg ));
 $application->add(new MDMProductsReprocessActionCommand( $cfg ));
+$application->add(new MDMProductSearchCommand( $cfg ));
+$application->add(new MDMSmartGroupDevicesSearchCommand( $cfg ));
+$application->add(new SystemUserDeleteCommand( $cfg ));
+
+//$application->add(new AirwatchProdAppsInstalled($cfg));
 #//$application->add(new MDMRelayServersSearchCommand( $cfg ));
 
 //MAMAppsPlaystoreSearchCommand

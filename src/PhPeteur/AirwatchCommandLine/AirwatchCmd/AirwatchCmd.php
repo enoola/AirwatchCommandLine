@@ -264,6 +264,73 @@ abstract class AirwatchCmd extends Command
     }
 
 
+    protected function run_delete($arSearchParams, InputInterface $input) : array
+    {
+        $resquery = $this->_oAW->Delete($arSearchParams);
+        //echo '---->';
+        //var_dump($resquery);
+        //echo '<-'.$this->_oAW->getFieldnameToPickInDataResultResponse().'---';
+        if ( !array_key_exists('data',$resquery ) )
+        {
+            $arAllAppsWithInterestingFields=['data'];
+            $arAllAppsWithInterestingFields['data'] = [$this->_oAW->getFieldnameToPickInDataResultResponse()=>null];
+            $arAllAppsWithInterestingFields['statuscode'] = $resquery['statuscode'];
+            return ($arAllAppsWithInterestingFields);
+        }
+
+
+        $arFieldsToDisplay = $this->_oAW->getDefaultFieldsToShow();
+        if ($this->isOptionShowAllFieldsOn($input)) {
+            $arFieldsToDisplay = $this->_oAW->getAllFieldsToShow();
+        }
+
+        $arAllAppsWithInterestingFields = [];
+
+        if (!is_null($resquery['data'][ $this->_oAW->getFieldnameToPickInDataResultResponse() ])) {
+
+
+            $arAllAppsWithInterestingFields['data'] = [ $this->_oAW->getFieldnameToPickInDataResultResponse() =>[]];
+
+            foreach ($resquery['data'][ $this->_oAW->getFieldnameToPickInDataResultResponse() ] as $arOneApp) {
+                $arOneAppWithInterestingFields = [];
+
+                foreach ($arFieldsToDisplay as $fieldName) {
+                    if (array_key_exists($fieldName, $arOneApp)) {
+                        if (is_array($arOneApp[$fieldName])) {
+                            $arOneAppWithInterestingFields[$fieldName] = $this->quicklyConvertArrayToString($arOneApp[$fieldName]);
+                        } else {
+                            $arOneAppWithInterestingFields[$fieldName] = $arOneApp[$fieldName];
+                        }
+                    } else {
+                        $arOneAppWithInterestingFields[$fieldName] = "N/A";
+                    }
+                }
+
+                if (array_key_exists('Id', $arOneApp) && is_array($arOneApp['Id']))
+                    $arOneAppWithInterestingFields['Id'] = $arOneApp['Id']['Value'];
+                else if (array_key_exists('ID', $arOneApp) && is_array($arOneApp['ID']))
+                    $arOneAppWithInterestingFields['ID'] = $arOneApp['ID']['Value'];
+                $arAllAppsWithInterestingFields['data'][ $this->_oAW->getFieldnameToPickInDataResultResponse() ][] = $arOneAppWithInterestingFields;
+            }
+
+
+            $arAllAppsWithInterestingFields['data']['Page'] = null;
+            $arAllAppsWithInterestingFields['data']['PageSize'] = null;
+            $arAllAppsWithInterestingFields['data']['Total'] = null;
+            if (array_key_exists('Page', $resquery['data']))
+                $arAllAppsWithInterestingFields['data']['Page'] = $resquery['data']['Page'];
+            if (array_key_exists('PageSize', $resquery['data']))
+                $arAllAppsWithInterestingFields['data']['PageSize'] = $resquery['data']['PageSize'];
+            if (array_key_exists('PageSize', $resquery['data']))
+                $arAllAppsWithInterestingFields['data']['Total'] = $resquery['data']['Total'];
+
+
+        }
+        $arAllAppsWithInterestingFields['statuscode'] = $resquery['statuscode'];
+        return ( $arAllAppsWithInterestingFields );
+    }
+
+
 
     protected function displayHorizontalSearchResults($resSearch, InputInterface $input, OutputInterface $output )
     {

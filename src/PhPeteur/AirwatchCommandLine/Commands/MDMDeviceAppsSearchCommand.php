@@ -83,6 +83,7 @@ class MDMDeviceAppsSearchCommand extends AirwatchCmd
 
     protected function run_search($arSearchParams, InputInterface $input) : array
     {
+        var_dump($arSearchParams);
         $resquery = $this->_oAW->Search($arSearchParams);
 
 
