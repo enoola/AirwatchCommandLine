@@ -274,7 +274,14 @@ abstract class AirwatchCmd extends Command
         {
             $arAllAppsWithInterestingFields=['data'];
             $arAllAppsWithInterestingFields['data'] = [$this->_oAW->getFieldnameToPickInDataResultResponse()=>null];
+            //echo '------<><><'.$this->_oAW->getResponse()->getStatusCode().'><><>------';
+
+            //if (array_key_exists('statuscode', $resquery))
+            //    $arAllAppsWithInterestingFields['statuscode'] = $resquery['statuscode'];
+            //if (array_key_exists('status', $resquery))
+            //$arAllAppsWithInterestingFields['statuscode'] = $this->_oAW->getResponse()->getStatusCode();
             $arAllAppsWithInterestingFields['statuscode'] = $resquery['statuscode'];
+            $arAllAppsWithInterestingFields['message'] = $resquery['message'];
             return ($arAllAppsWithInterestingFields);
         }
 
@@ -326,7 +333,11 @@ abstract class AirwatchCmd extends Command
 
 
         }
-        $arAllAppsWithInterestingFields['statuscode'] = $resquery['statuscode'];
+        $arAllAppsWithInterestingFields['statuscode'] = (array_key_exists('statuscode',$resquery)?$resquery['statuscode']:$resquery['status']);
+
+        if (array_key_exists('message', $resquery))
+            $arAllAppsWithInterestingFields['message'] = $resquery['message'];
+
         return ( $arAllAppsWithInterestingFields );
     }
 

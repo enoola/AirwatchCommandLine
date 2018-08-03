@@ -56,11 +56,16 @@ class SystemUserDeleteCommand extends AirwatchCmd
         //$resquery = null;
         $resquery = parent::run_delete($arInterestingParams, $input );
 
-        if ($resquery['statuscode'] == 200)
-            $output->writeln('User with id '.$arInterestingParams['id'].' deleted.' );
-        else
-            $output->writeln('User with id '.$arInterestingParams['id'].' not deleted. error :'.$resquery['statuscode'].'.' );
-
+        //print_r($resquery);
+        if (array_key_exists('status', $resquery)) {
+            if (strncmp('200',$resquery['status'],3) == 0)
+                $output->writeln('User with id ' . $arInterestingParams['id'] . ' deleted.');
+        }
+        else if (array_key_exists('statuscode', $resquery)) {
+//            if ($resquery['statuscode'] == 200)
+//                $output->writeln('User with id ' . $arInterestingParams['id'] . ' deleted.');
+                $output->writeln('User with id ' . $arInterestingParams['id'] . ' not deleted. error:'.$resquery['statuscode'] . '.');
+        }
         //var_dump($resquery);
         /*
         if (parent::isOptionRenderVerticalOn($input)) {
