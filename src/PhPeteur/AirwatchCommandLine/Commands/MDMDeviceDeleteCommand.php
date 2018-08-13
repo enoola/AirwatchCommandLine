@@ -56,7 +56,7 @@ class MDMDeviceDeleteCommand extends AirwatchCmd
         //$resquery = null;
         $resquery = parent::run_delete($arInterestingParams, $input );
 
-        //var_dump($resquery);
+        var_dump($resquery);
         /*
         if (array_key_exists('status', $resquery)) {
             if (strncmp('200',$resquery['status'],3) == 0)
@@ -68,7 +68,7 @@ class MDMDeviceDeleteCommand extends AirwatchCmd
                 $output->writeln('Device with id ' . $arInterestingParams['id'] . ' deleted.');
             }
             else {
-                $output->writeln('Device with id ' . $arInterestingParams['id'] . ' not deleted. error:'.$resquery['statuscode'] . '.');
+                $output->writeln('Device with id ' . $arInterestingParams['id'] . ' not deleted. error:'.$resquery['statuscode'] . ' reason : '.$resquery['message']);
             }
         }
         //var_dump($resquery);
