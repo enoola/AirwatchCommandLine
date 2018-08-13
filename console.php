@@ -66,6 +66,9 @@ use PhPeteur\AirwatchCommandLine\Commands\MDMProductsReprocessActionCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\MDMProductSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\MDMSmartGroupDevicesSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\SystemUserDeleteCommand;
+use \PhPeteur\AirwatchCommandLine\Commands\SystemUserChangeOGCommand;
+use \PhPeteur\AirwatchCommandLine\Commands\MDMDeviceDeleteCommand;
+use \PhPeteur\AirwatchCommandLine\Commands\SystemUserUpdateCommand;
 #//use \PhPeteur\Commands\MDMRelayServersSearchCommand;
 //use \PhPeteur\AirwatchCommandLine\Commands\AirwatchProdAppsInstalled;
 
@@ -134,6 +137,9 @@ $application->add(new MDMProductsReprocessActionCommand( $cfg ));
 $application->add(new MDMProductSearchCommand( $cfg ));
 $application->add(new MDMSmartGroupDevicesSearchCommand( $cfg ));
 $application->add(new SystemUserDeleteCommand( $cfg ));
+$application->add(new SystemUserChangeOGCommand( $cfg ));//!\ NOT WORKING
+$application->add(new MDMDeviceDeleteCommand( $cfg ));
+$application->add(new SystemUserUpdateCommand( $cfg ));
 
 //$application->add(new AirwatchProdAppsInstalled($cfg));
 #//$application->add(new MDMRelayServersSearchCommand( $cfg ));

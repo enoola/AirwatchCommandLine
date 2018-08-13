@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: enola
- * Date: 01/08/2018
- * Time: 10:34
+ * Date: 03/08/2018
+ * Time: 09:33
  */
 
 namespace PhPeteur\AirwatchCommandLine\Commands;
@@ -14,27 +14,27 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 use PhPeteur\AirwatchCommandLine\AirwatchCmd\AirwatchCmd;
-use PhPeteur\AirwatchWebservices\Services\AirwatchSystemUserDelete;
+use PhPeteur\AirwatchWebservices\Services\AirwatchSystemUserChangeOG;
 
 /*
  * Delete Enrollment User's defined by id
  * Functionality – Delete enrollment user's identified by the enrollment user Id.
  */
-class SystemUserDeleteCommand extends AirwatchCmd
+class SystemUserChangeOGCommand extends AirwatchCmd
 {
     protected function configure()
     {
-        $this->_oAW = new AirwatchSystemUserDelete( $this->_config );
+        $this->_oAW = new AirwatchSystemUserChangeOG( $this->_config );
         if (is_null( $this->_oAW))
             die ("Unable to create AirwatchMDMDevicesSearch object :/");
 
-        $this->setName('system-user-delete');
+        $this->setName('system-user-change-og');
 
         foreach ($this->_oAW->getPossibleSearchParams() as $param => $pdescription)
         {
             $this->addOption($param,null, InputOption::VALUE_REQUIRED, $pdescription);
         }
-        $this->setDescription(AirwatchSystemUserDelete::CLASS_SENTENCE_AIM);
+        $this->setDescription(AirwatchSystemUserChangeOG::CLASS_SENTENCE_AIM);
         parent::addGenericSearchOptions();
     }
 
@@ -53,18 +53,18 @@ class SystemUserDeleteCommand extends AirwatchCmd
 
         $arInterestingParams = count($arInterestingParams) >0 ? $arInterestingParams : null;
 
-        $resquery = parent::run_delete($arInterestingParams, $input );
+        //$resquery = null;
+        $resquery = parent::run_post($arInterestingParams, $input );
 
+        //print_r($resquery);
         if (array_key_exists('status', $resquery)) {
             if (strncmp('200',$resquery['status'],3) == 0)
                 $output->writeln('User with id ' . $arInterestingParams['id'] . ' deleted.');
         }
         else if (array_key_exists('statuscode', $resquery)) {
-            if ($resquery['statuscode'] == 200) {
-                $output->writeln('User with id ' . $arInterestingParams['id'] . ' deleted.');
-            } else {
-                $output->writeln('User with id ' . $arInterestingParams['id'] . ' not deleted. error:' . $resquery['statuscode'] . '.');
-            }
+//            if ($resquery['statuscode'] == 200)
+//                $output->writeln('User with id ' . $arInterestingParams['id'] . ' deleted.');
+            $output->writeln('User with id ' . $arInterestingParams['id'] . ' not deleted. error:'.$resquery['statuscode'] . '.');
         }
         //var_dump($resquery);
         /*

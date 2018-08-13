@@ -263,6 +263,22 @@ abstract class AirwatchCmd extends Command
         return ( $arAllAppsWithInterestingFields );
     }
 
+    protected function run_post($arSearchParams, InputInterface $input) : array
+    {
+        $resquery = $this->_oAW->Change($arSearchParams);
+        //var_dump($resquery);
+        if (is_null($resquery['data'])) {
+            $arAllAppsWithInterestingFields = $resquery;
+//            $arAllAppsWithInterestingFields['data'] = [$this->_oAW->getFieldnameToPickInDataResultResponse() => null];
+
+            return ($arAllAppsWithInterestingFields);
+        }
+        else
+            $arAllAppsWithInterestingFields = null;
+
+        return ( $arAllAppsWithInterestingFields );
+    }
+
 
     protected function run_delete($arSearchParams, InputInterface $input) : array
     {
@@ -319,7 +335,6 @@ abstract class AirwatchCmd extends Command
                     $arOneAppWithInterestingFields['ID'] = $arOneApp['ID']['Value'];
                 $arAllAppsWithInterestingFields['data'][ $this->_oAW->getFieldnameToPickInDataResultResponse() ][] = $arOneAppWithInterestingFields;
             }
-
 
             $arAllAppsWithInterestingFields['data']['Page'] = null;
             $arAllAppsWithInterestingFields['data']['PageSize'] = null;

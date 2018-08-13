@@ -2,39 +2,39 @@
 /**
  * Created by PhpStorm.
  * User: enola
- * Date: 01/08/2018
- * Time: 10:34
+ * Date: 08/08/2018
+ * Time: 11:53
  */
 
 namespace PhPeteur\AirwatchCommandLine\Commands;
 
 
+use PhPeteur\AirwatchWebservices\Services\AirwatchMDMDeviceDelete;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 use PhPeteur\AirwatchCommandLine\AirwatchCmd\AirwatchCmd;
-use PhPeteur\AirwatchWebservices\Services\AirwatchSystemUserDelete;
 
 /*
- * Delete Enrollment User's defined by id
- * Functionality – Delete enrollment user's identified by the enrollment user Id.
+ * Delete device defined by id (id,macaddr,serialnum,udid)
+ * Functionality – Deletes the device information from the AirWatch Console and un-enrolls the device.
  */
-class SystemUserDeleteCommand extends AirwatchCmd
+class MDMDeviceDeleteCommand extends AirwatchCmd
 {
     protected function configure()
     {
-        $this->_oAW = new AirwatchSystemUserDelete( $this->_config );
+        $this->_oAW = new AirwatchMDMDeviceDelete( $this->_config );
         if (is_null( $this->_oAW))
             die ("Unable to create AirwatchMDMDevicesSearch object :/");
 
-        $this->setName('system-user-delete');
+        $this->setName('mdm-device-delete');
 
         foreach ($this->_oAW->getPossibleSearchParams() as $param => $pdescription)
         {
             $this->addOption($param,null, InputOption::VALUE_REQUIRED, $pdescription);
         }
-        $this->setDescription(AirwatchSystemUserDelete::CLASS_SENTENCE_AIM);
+        $this->setDescription(AirwatchMDMDeviceDelete::CLASS_SENTENCE_AIM);
         parent::addGenericSearchOptions();
     }
 
@@ -53,17 +53,22 @@ class SystemUserDeleteCommand extends AirwatchCmd
 
         $arInterestingParams = count($arInterestingParams) >0 ? $arInterestingParams : null;
 
+        //$resquery = null;
         $resquery = parent::run_delete($arInterestingParams, $input );
 
+        //var_dump($resquery);
+        /*
         if (array_key_exists('status', $resquery)) {
             if (strncmp('200',$resquery['status'],3) == 0)
-                $output->writeln('User with id ' . $arInterestingParams['id'] . ' deleted.');
+                $output->writeln('Device with id ' . $arInterestingParams['id'] . ' deleted.');
         }
-        else if (array_key_exists('statuscode', $resquery)) {
-            if ($resquery['statuscode'] == 200) {
-                $output->writeln('User with id ' . $arInterestingParams['id'] . ' deleted.');
-            } else {
-                $output->writeln('User with id ' . $arInterestingParams['id'] . ' not deleted. error:' . $resquery['statuscode'] . '.');
+        else */
+        if (array_key_exists('statuscode', $resquery)) {
+            if (strcmp($resquery['statuscode'], '204 No Content') == 0) {
+                $output->writeln('Device with id ' . $arInterestingParams['id'] . ' deleted.');
+            }
+            else {
+                $output->writeln('Device with id ' . $arInterestingParams['id'] . ' not deleted. error:'.$resquery['statuscode'] . '.');
             }
         }
         //var_dump($resquery);
