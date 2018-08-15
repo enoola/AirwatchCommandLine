@@ -43,7 +43,7 @@ class MDMDevicesBulkDeviceSearchCommand extends AirwatchCmd
         $arInterestingParams = [];
         $clPossileParam = $this->_oAW->getPossibleSearchParams();
 
-        $arPossibleSearchBy = ["Macaddress", "Udid", "Serialnumber","ImeiNumber" ];
+        $arPossibleSearchBy = ["Macaddress", "Udid", "Serialnumber","Imeinumber" ];
         if (!is_null ($input->getOption('searchby'))){
             if (!in_array($input->getOption('searchby'),$arPossibleSearchBy))
                 throw new \Exception('Possible value for searchby :'.implode(',',$arPossibleSearchBy).'.');

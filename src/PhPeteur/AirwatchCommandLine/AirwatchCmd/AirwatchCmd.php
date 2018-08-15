@@ -307,8 +307,12 @@ abstract class AirwatchCmd extends Command
             $arFieldsToDisplay = $this->_oAW->getAllFieldsToShow();
         }
 
+        return($resquery);
+
         $arAllAppsWithInterestingFields = [];
 
+
+        if (array_key_exists($this->_oAW->getFieldnameToPickInDataResultResponse(),$resquery['data']))
         if (!is_null($resquery['data'][ $this->_oAW->getFieldnameToPickInDataResultResponse() ])) {
 
 
