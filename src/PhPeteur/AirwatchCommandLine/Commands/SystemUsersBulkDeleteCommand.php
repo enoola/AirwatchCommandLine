@@ -77,7 +77,7 @@ class SystemUsersBulkDeleteCommand extends AirwatchCmd
             {
                 if ($resquery['data']['TotalItems'] == $resquery['data']['AcceptedItems']) //everything has been deleted, ok
                 {
-                    $this->myoutput($output, self::CMD_STATUS_KO, "Every users deleted.");
+                    $this->myoutput($output, self::CMD_STATUS_OK, "Every users deleted.");
                 } else //at least one user failed
                 {
                     $this->myoutput($output, self::CMD_STATUS_KO,"TotalItems:" . $resquery['data']['TotalItems'] ) . PHP_EOL;
