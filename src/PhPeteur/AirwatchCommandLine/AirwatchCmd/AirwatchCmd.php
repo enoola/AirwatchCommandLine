@@ -81,6 +81,7 @@ abstract class AirwatchCmd extends Command
         //var_dump($resquery);
         if ( is_null($resquery['data']) )
         {
+            echo "fuck off ?";
             $arAllAppsWithInterestingFields=['data'];
             $arAllAppsWithInterestingFields['data'] = [$this->_oAW->getFieldnameToPickInDataResultResponse()=>null];
             return ($arAllAppsWithInterestingFields);
@@ -137,6 +138,9 @@ abstract class AirwatchCmd extends Command
         return ( $arAllAppsWithInterestingFields );
     }
 
+    /*
+ * useful when workspaceone returns an array like array['data'][0][lots,of,entries],[1][lots,of,entries]
+ */
     protected function run_search_custo($arSearchParams, InputInterface $input) : array
     {
         $resquery = $this->_oAW->Search($arSearchParams);
@@ -150,6 +154,7 @@ abstract class AirwatchCmd extends Command
 
         if (is_null($resquery['data']) || (is_array($resquery['data']) && (count($resquery['data']) == 0))) {
 
+            //echo "custo fuckoff";
             $arAllAppsWithInterestingFields['data'] = [$this->_oAW->getFieldnameToPickInDataResultResponse() => null];
             $arAllAppsWithInterestingFields['data']['Page'] = null;
             $arAllAppsWithInterestingFields['data']['PageSize'] = null;
@@ -199,6 +204,9 @@ abstract class AirwatchCmd extends Command
         return ( $arAllAppsWithInterestingFields );
     }
 
+    /*
+     * useful when workspaceone returns an array like array['data'][0][lots,of,entries],[1][lots,of,entries]
+     */
     protected function run_search_custo_multientries($arSearchParams, InputInterface $input) : array
     {
         $resquery = $this->_oAW->Search($arSearchParams);

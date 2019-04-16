@@ -31,13 +31,13 @@ class SystemInfoCommand extends AirwatchCmd
        $infos = $this->_oAW->getInfos() ;
 
         $output->writeln('Server uri : '. $infos['uri']);
+        $output->writeln('Server version : '. $infos['data']['ProductVersion']);
+        $output->writeln('Build Key : '. $infos['data']['BuildKey']);
         $output->writeln('Server response : '.$infos['status']);
         $output->writeln('Information gathered :');
-
         $output->writeln('Ressources : ');
         foreach ($infos['data']['Resources']['Workspaces'] as $one)
             $output->writeln("\t".$one['Name'].' : '. $one['Location'] );
-
-
+        //var_dump($infos);
     }
 }
