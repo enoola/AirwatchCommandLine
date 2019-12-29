@@ -73,6 +73,7 @@ use \PhPeteur\AirwatchCommandLine\Commands\SystemUsersBulkDeleteCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\MDMDEPProfilesSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\MDMDEPDevicesSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\SystemGroupAPNSSearchCommand;
+use \PhPeteur\AirwatchCommandLine\Commands\MDMProfilesSearchCommand;
 #//use \PhPeteur\Commands\MDMRelayServersSearchCommand;
 //use \PhPeteur\AirwatchCommandLine\Commands\AirwatchProdAppsInstalled;
 
@@ -148,6 +149,7 @@ $application->add(new SystemUsersBulkDeleteCommand( $cfg ));
 $application->add(new MDMDEPProfilesSearchCommand( $cfg ));
 $application->add(new MDMDEPDevicesSearchCommand($cfg ));
 $application->add(new SystemGroupAPNSSearchCommand($cfg ));
+$application->add(new MDMProfilesSearchCommand( $cfg ));
 
 //$application->add(new AirwatchProdAppsInstalled($cfg));
 #//$application->add(new MDMRelayServersSearchCommand( $cfg ));
