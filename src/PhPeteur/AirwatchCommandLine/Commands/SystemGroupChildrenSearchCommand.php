@@ -59,6 +59,7 @@ class SystemGroupChildrenSearchCommand extends AirwatchCmd
 
 
         $resquery = $this->run_search($arInterestingParams, $input);
+        //var_dump($resquery);exit;
 
         if (parent::isOptionRenderVerticalOn($input)) {
             $this->displayVerticalSearchResults($resquery, $output);
@@ -77,10 +78,11 @@ class SystemGroupChildrenSearchCommand extends AirwatchCmd
         return ( $resquery );
     }
 
+
     protected function run_search($arSearchParams, InputInterface $input) : array
     {
         $resquery = $this->_oAW->Search($arSearchParams);
-        //var_dump($resquery);
+        //var_dump($resquery);exit;
 
         // so no getFieldnameToPickInDataResultResponse so far !
         $this->_oAW->setFieldnameToPickInDataResultResponse('custo_SysOGChildrenInfos');
@@ -112,24 +114,29 @@ class SystemGroupChildrenSearchCommand extends AirwatchCmd
             $arOneAppWithInterestingFields = [];
             // /!\ /!\/!\/!\/!\/!\/!\/!\ HERE WE ARE MESSING A BIT !
             if (count($resquery['data']) > 0) {
-                foreach ($resquery['data'][0] as $fieldName => $OneInfo) {
+                foreach ($resquery['data'] as $oneDataEntryInRes) {
+                    foreach ($oneDataEntryInRes as $fieldName => $OneInfo) {
 
-                    if (in_array($fieldName, $arFieldsToDisplay)) {
+                        if (in_array($fieldName, $arFieldsToDisplay)) {
 
-                        if (is_array($OneInfo)) {
-                            $arOneAppWithInterestingFields[$fieldName] = $this->quicklyConvertArrayToString($OneInfo);
-                        } else {
-                            $arOneAppWithInterestingFields[$fieldName] = $OneInfo;
+                            if (is_array($OneInfo)) {
+                                $arOneAppWithInterestingFields[$fieldName] = $this->quicklyConvertArrayToString($OneInfo);
+                            } else {
+                                $arOneAppWithInterestingFields[$fieldName] = $OneInfo;
+                            }
                         }
                     }
-                }
 
-                if (array_key_exists('Id', $arOneAppWithInterestingFields))
-                    $arOneAppWithInterestingFields['Id'] = $resquery['data'][0]['Id']['Value'];
-                if (array_key_exists('DeviceId', $resquery['data'][0]))
-                    $arOneAppWithInterestingFields['DeviceId'] = $resquery['data'][0]['DeviceId']['Value'];
-            }
-            $arAllAppsWithInterestingFields['data'][$this->_oAW->getFieldnameToPickInDataResultResponse()][] = $arOneAppWithInterestingFields;
+                    if (array_key_exists('Id', $arOneAppWithInterestingFields))
+                        $arOneAppWithInterestingFields['Id'] = $oneDataEntryInRes['Id']['Value'];
+                    if (array_key_exists('ParentLocationGroup', $oneDataEntryInRes)) {
+                        $arOneAppWithInterestingFields['ParentId'] = $oneDataEntryInRes['ParentLocationGroup']['Id']['Value'];
+                        $arOneAppWithInterestingFields['ParentUuid'] = $oneDataEntryInRes['ParentLocationGroup']['Uuid'];
+                    }
+
+                    $arAllAppsWithInterestingFields['data'][$this->_oAW->getFieldnameToPickInDataResultResponse()][] = $arOneAppWithInterestingFields;
+                }
+                }
         }
 
         $arAllAppsWithInterestingFields['data']['Page'] = null;
@@ -138,4 +145,6 @@ class SystemGroupChildrenSearchCommand extends AirwatchCmd
 
         return ( $arAllAppsWithInterestingFields );
     }
+
+
 }

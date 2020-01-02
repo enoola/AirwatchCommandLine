@@ -78,7 +78,7 @@ abstract class AirwatchCmd extends Command
     {
         $resquery = $this->_oAW->Search($arSearchParams);
 
-        //var_dump($resquery);
+        var_dump($resquery);exit;
         if ( is_null($resquery['data']) )
         {
             echo "fuck off ?";
@@ -145,7 +145,7 @@ abstract class AirwatchCmd extends Command
     {
         $resquery = $this->_oAW->Search($arSearchParams);
 
-        var_dump( $resquery );
+        //var_dump( $resquery );exit;
         // so no getFieldnameToPickInDataResultResponse so far !
         $this->_oAW->setFieldnameToPickInDataResultResponse('custo_Fields');
 

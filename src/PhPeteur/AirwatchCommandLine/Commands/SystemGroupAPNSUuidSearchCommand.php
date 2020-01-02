@@ -10,7 +10,7 @@
 namespace PhPeteur\AirwatchCommandLine\Commands;
 
 
-use PhPeteur\AirwatchWebservices\Services\AirwatchSystemGroupAPNSSearch;
+use PhPeteur\AirwatchWebservices\Services\AirwatchSystemGroupAPNSUUIdSearch;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -20,22 +20,22 @@ use PhPeteur\AirwatchCommandLine\AirwatchCmd\AirwatchCmd;
 /*
  * This endpoint is to get the details of APNs certificate Blob(.pem) uploaded to the AirWatch server.
  */
-class SystemGroupAPNSSearchCommand extends AirwatchCmd
+class SystemGroupAPNSUuidSearchCommand extends AirwatchCmd
 {
     protected function configure()
     {
-        $this->_oAW = new AirwatchSystemGroupAPNSSearch($this->_config);
+        $this->_oAW = new AirwatchSystemGroupAPNSUUIdSearch($this->_config);
         if (is_null($this->_oAW))
-            throw new AirwatchCmdException('Unable to create AirwatchSystemGroupAPNSSearch object within' . __CLASS__, 42);
+            throw new AirwatchCmdException('Unable to create AirwatchSystemGroupAPNSUuidSearch object within' . __CLASS__, 42);
 
-        $this->setName('system-groupapns-search');
+        $this->setName('system-groupapnsuuid-search');
         if (!is_null($this->_oAW->getPossibleSearchParams())) {
             foreach ($this->_oAW->getPossibleSearchParams() as $param => $pdescription) {
                 $this->addOption($param, null, InputOption::VALUE_REQUIRED, $pdescription);
 
             }
         }
-        $this->setDescription(AirwatchSystemGroupAPNSSearch::CLASS_SENTENCE_AIM);
+        $this->setDescription(AirwatchSystemGroupAPNSUUIdSearch::CLASS_SENTENCE_AIM);
 
         parent::addGenericSearchOptions();
     }
@@ -45,8 +45,8 @@ class SystemGroupAPNSSearchCommand extends AirwatchCmd
         $arInterestingParams = [];
         $clPossileParam = $this->_oAW->getPossibleSearchParams();
 
-        if (is_null ( $input->getOption('id')) )
-            throw new \Exception("I need an id at least");
+        if (is_null ( $input->getOption('uuid')) )
+            throw new \Exception("I need an uuid at least");
 
         foreach ($input->getOptions() as $optName => $optValue) {
             if (array_key_exists($optName, $clPossileParam ) ) {
@@ -81,7 +81,7 @@ class SystemGroupAPNSSearchCommand extends AirwatchCmd
 
     protected function run_search($arSearchParams, InputInterface $input) : array
     {
-        $resquery = $this->_oAW->Search($arSearchParams);
+        $resquery = $this->_oAW->SearchV2($arSearchParams);
 
 
         // so no getFieldnameToPickInDataResultResponse so far !
