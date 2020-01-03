@@ -75,6 +75,7 @@ use \PhPeteur\AirwatchCommandLine\Commands\MDMDEPDevicesSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\SystemGroupAPNSSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\MDMProfilesSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\SystemGroupAPNSUuidSearchCommand;
+use \PhPeteur\AirwatchCommandLine\Commands\MDMDeviceCommandsCommand;
 #//use \PhPeteur\Commands\MDMRelayServersSearchCommand;
 //use \PhPeteur\AirwatchCommandLine\Commands\AirwatchProdAppsInstalled;
 
@@ -152,6 +153,7 @@ $application->add(new MDMDEPDevicesSearchCommand($cfg ));
 $application->add(new SystemGroupAPNSSearchCommand($cfg ));
 $application->add(new MDMProfilesSearchCommand( $cfg ));
 $application->add(new SystemGroupAPNSUuidSearchCommand($cfg ));
+$application->add(new MDMDeviceCommandsCommand( $cfg ));
 
 //$application->add(new AirwatchProdAppsInstalled($cfg));
 #//$application->add(new MDMRelayServersSearchCommand( $cfg ));

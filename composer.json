@@ -4,7 +4,6 @@
     "symfony/finder": "^4.0",
     "symfony/yaml": "^4.0",
     "symfony/console": "^4.0",
-    "symfony/service-contracts": "^4.0",
     "enoola/airwatchrestwebservicesclientlib": "dev-master"
   },
   "repositories": [

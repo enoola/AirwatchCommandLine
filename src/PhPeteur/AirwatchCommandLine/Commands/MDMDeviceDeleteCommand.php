@@ -26,7 +26,7 @@ class MDMDeviceDeleteCommand extends AirwatchCmd
     {
         $this->_oAW = new AirwatchMDMDeviceDelete( $this->_config );
         if (is_null( $this->_oAW))
-            die ("Unable to create AirwatchMDMDevicesSearch object :/");
+            die ("Unable to create AirwatchMDMDeviceDelete object :/");
 
         $this->setName('mdm-device-delete');
 
