@@ -61,7 +61,7 @@ class MDMDeviceCommandsCommand extends AirwatchCmd
             else {
                 parent::myoutput($output,parent::CMD_STATUS_OK, 'Failed : '. $resquery['status']);
             }
-            
+
         return ($resquery);
     }
 
