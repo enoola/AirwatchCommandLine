@@ -100,9 +100,9 @@ class MDMDevicesAppStatusSearchCommand extends AirwatchCmd
        * I decided to rewrite the response, and added field called 'custo_DeviceInfos'
        * this way rendervertical and renderhorizontal will be able to display without an overload :)
    */
-    protected function run_search($arSearchParams, InputInterface $input) : array
+    protected function run_search($arSearchParams, InputInterface $input, $szContentType = AirwatchCmd::HTTP_DEFAULT_CONTENT_TYPE) : array
     {
-        $resquery = $this->_oAW->Search($arSearchParams);
+        $resquery = $this->_oAW->Search($arSearchParams, $szContentType);
 
         // so no getFieldnameToPickInDataResultResponse so far !
         $this->_oAW->setFieldnameToPickInDataResultResponse('custo_AppStatus');

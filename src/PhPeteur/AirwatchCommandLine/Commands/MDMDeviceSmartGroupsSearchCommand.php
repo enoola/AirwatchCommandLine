@@ -80,9 +80,9 @@ class MDMDeviceSmartGroupsSearchCommand extends AirwatchCmd
      * we transform field SmartGroupId into a value rather than getting json, bit more costy in term of calculation but at least
      * it's redable and less redudant.
      */
-    protected function run_search($arSearchParams, InputInterface $input): array
+    protected function run_search($arSearchParams, InputInterface $input, $szContentType = AirwatchCmd::HTTP_DEFAULT_CONTENT_TYPE): array
     {
-        $resquery = parent::run_search($arSearchParams, $input);
+        $resquery = parent::run_search($arSearchParams, $input, $szContentType);
 
         if (!is_null($resquery['data']) && array_key_exists($this->_oAW->getFieldnameToPickInDataResultResponse(), $resquery['data'])) {
             foreach ($resquery['data'][$this->_oAW->getFieldnameToPickInDataResultResponse()] as $k => $arOneEntry) {

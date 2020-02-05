@@ -18,6 +18,7 @@ use Symfony\Component\Console\Helper\TableSeparator;
 
 abstract class AirwatchCmd extends Command
 {
+    const HTTP_DEFAULT_CONTENT_TYPE = 'application/json;version=1';
     const CMD_STATUS_OK = 1;
     const CMD_STATUS_KO = 0;
     const CMD_STATUS_IF = 2;
@@ -74,11 +75,11 @@ abstract class AirwatchCmd extends Command
     /*
      * kind'a generic :)
      */
-    protected function run_search($arSearchParams, InputInterface $input) : array
+    protected function run_search($arSearchParams, InputInterface $input, $szContentType = 'application/json;version=1') : array
     {
-        $resquery = $this->_oAW->Search($arSearchParams);
+        $resquery = $this->_oAW->Search($arSearchParams, $szContentType);
 
-        var_dump($resquery);exit;
+        //var_dump($resquery);exit;
         if ( is_null($resquery['data']) )
         {
             echo "fuck off ?";

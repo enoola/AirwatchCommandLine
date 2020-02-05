@@ -76,6 +76,8 @@ use \PhPeteur\AirwatchCommandLine\Commands\SystemGroupAPNSSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\MDMProfilesSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\SystemGroupAPNSUuidSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\MDMDeviceCommandsCommand;
+use \PhPeteur\AirwatchCommandLine\Commands\MAMAppsApplestoreSearchCommand;
+use \PhPeteur\AirwatchCommandLine\Commands\SystemScimV2UsersCommand;
 #//use \PhPeteur\Commands\MDMRelayServersSearchCommand;
 //use \PhPeteur\AirwatchCommandLine\Commands\AirwatchProdAppsInstalled;
 
@@ -84,8 +86,15 @@ $configfile = __DIR__.'/config.yml';
 if (!is_readable($configfile)) {
     die('Please copy config.yml.dist to config.yml'.PHP_EOL);
 }
-$cfg = Yaml::parseFile($configfile);
+$justcfg = Yaml::parseFile($configfile);
 
+$credentialsfile = __DIR__.'/credentials.yml';
+if (!is_readable($credentialsfile)) {
+    die('Please copy credentials.yml.dist to credentials.yml'.PHP_EOL);
+}
+$creds = Yaml::parseFile($credentialsfile);
+
+$cfg = array_merge($justcfg, $creds);
 
 //var_dump($cfg);
 //exit;
@@ -154,6 +163,8 @@ $application->add(new SystemGroupAPNSSearchCommand($cfg ));
 $application->add(new MDMProfilesSearchCommand( $cfg ));
 $application->add(new SystemGroupAPNSUuidSearchCommand($cfg ));
 $application->add(new MDMDeviceCommandsCommand( $cfg ));
+$application->add(new MAMAppsApplestoreSearchCommand( $cfg ));
+$application->add(new SystemScimV2UsersCommand( $cfg ));
 
 //$application->add(new AirwatchProdAppsInstalled($cfg));
 #//$application->add(new MDMRelayServersSearchCommand( $cfg ));

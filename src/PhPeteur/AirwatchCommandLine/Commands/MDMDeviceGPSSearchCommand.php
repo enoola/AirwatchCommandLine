@@ -82,9 +82,9 @@ class MDMDeviceGPSSearchCommand extends AirwatchCmd
         return ( $resquery );
     }
 
-    protected function run_search($arSearchParams, InputInterface $input) : array
+    protected function run_search($arSearchParams, InputInterface $input, $szContentType = AirwatchCmd::HTTP_DEFAULT_CONTENT_TYPE) : array
     {
-        $resquery = $this->_oAW->Search($arSearchParams);
+        $resquery = $this->_oAW->Search($arSearchParams, $szContentType);
 
 
         // so no getFieldnameToPickInDataResultResponse so far !

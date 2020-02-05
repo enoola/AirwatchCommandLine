@@ -81,9 +81,11 @@ class MDMDeviceProfilesSearchCommand extends AirwatchCmd
     /*
      * to be implemented properly
      */
-    protected function run_search($arSearchParams, InputInterface $input): array
+    /*
+    protected function run_search($arSearchParams, InputInterface $input,  $szContentType = AirwatchCmd::HTTP_DEFAULT_CONTENT_TYPE): array
     {
         $resquery = parent::run_search($arSearchParams, $input);
+        */
        /*
         *
         * if (!is_null($resquery['data']) && array_key_exists($this->_oAW->getFieldnameToPickInDataResultResponse(), $resquery['data']) && !is_null($resquery['data'][$this->_oAW->getFieldnameToPickInDataResultResponse()])) {
@@ -93,7 +95,7 @@ class MDMDeviceProfilesSearchCommand extends AirwatchCmd
                 ///$resquery['data'][$this->_oAW->getFieldnameToPickInDataResultResponse()][$k]['LocationGroupId'] = json_decode($arOneEntry['LocationGroupId'], true);
             }
         }*/
-        return ($resquery);
-    }
+    //    return ($resquery);
+    //}
 
 }

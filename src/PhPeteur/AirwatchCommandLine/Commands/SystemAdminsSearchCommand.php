@@ -76,9 +76,9 @@ class SystemAdminsSearchCommand extends AirwatchCmd
     /*
      * overloading parent function.
      */
-    protected function run_search($arSearchParams, InputInterface $input) : array
+    protected function run_search($arSearchParams, InputInterface $input,$szContentType='application/json;version=1') : array
     {
-        $resquery = parent::run_search($arSearchParams, $input);
+        $resquery = parent::run_search($arSearchParams, $input, $szContentType);
         if (array_key_exists($this->_oAW->getFieldnameToPickInDataResultResponse(), $resquery['data']))
         {
             if (!is_null($resquery['data'][$this->_oAW->getFieldnameToPickInDataResultResponse()])) {

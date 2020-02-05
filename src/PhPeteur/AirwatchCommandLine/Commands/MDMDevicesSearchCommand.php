@@ -35,7 +35,7 @@ class MDMDevicesSearchCommand extends AirwatchCmd
         parent::addGenericSearchOptions();
     }
 
-    protected function doRun(InputInterface $input, OutputInterface $output) : array
+    protected function doRun(InputInterface $input, OutputInterface $output,$szContentType='application/json;version=1') : array
     {
         $arInterestingParams = [];
         $clPossileParam = $this->_oAW->getPossibleSearchParams();
@@ -130,7 +130,7 @@ class MDMDevicesSearchCommand extends AirwatchCmd
                 return ( $arAllAppsWithInterestingFields );
             }
         }
-            return ( parent::run_search($arSearchParams, $input) );
+            return ( parent::run_search($arSearchParams, $input, 'application/json;version=1') );
     }
 
 }

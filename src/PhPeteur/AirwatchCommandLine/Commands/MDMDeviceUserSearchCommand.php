@@ -21,8 +21,6 @@ use PhPeteur\AirwatchCommandLine\AirwatchCmd\AirwatchCmd;
  */
 class MDMDeviceUserSearchCommand extends AirwatchCmd
 {
-
-
     protected function configure()
     {
         $this->_oAW = new AirwatchMDMDeviceUserSearch( $this->_config );
@@ -86,9 +84,9 @@ class MDMDeviceUserSearchCommand extends AirwatchCmd
     }
 
 
-    protected function run_search($arSearchParams, InputInterface $input) : array
+    protected function run_search($arSearchParams, InputInterface $input,  $szContentType = AirwatchCmd::HTTP_DEFAULT_CONTENT_TYPE) : array
     {
-        $resquery = $this->_oAW->Search($arSearchParams);
+        $resquery = $this->_oAW->Search($arSearchParams, $szContentType);
 
 
         // so no getFieldnameToPickInDataResultResponse so far !

@@ -79,9 +79,9 @@ class SystemGroupAPNSUuidSearchCommand extends AirwatchCmd
         return ( $resquery );
     }
 
-    protected function run_search($arSearchParams, InputInterface $input) : array
+    protected function run_search($arSearchParams, InputInterface $input, $szContentType = 'application/json;version=2') : array
     {
-        $resquery = $this->_oAW->SearchV2($arSearchParams);
+        $resquery = $this->_oAW->SearchV2($arSearchParams, $szContentType);
 
 
         // so no getFieldnameToPickInDataResultResponse so far !
