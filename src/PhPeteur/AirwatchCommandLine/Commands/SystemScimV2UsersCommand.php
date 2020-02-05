@@ -17,7 +17,6 @@ use PhPeteur\AirwatchWebservices\Services\AirwatchSystemScimV2Users;
 
 class SystemScimV2UsersCommand extends AirwatchCmd
 {
-
     protected function configure()
     {
         $this->_oAW = new AirwatchSystemScimV2Users( $this->_config );
@@ -48,7 +47,7 @@ class SystemScimV2UsersCommand extends AirwatchCmd
         }
         $arInterestingParams = count($arInterestingParams) >0 ? $arInterestingParams : null;
 
-        $resquery = $this->run_search($arInterestingParams, $input);
+        $resquery = self::run_search_custo($arInterestingParams, $input,'application/scim+json;version=2');
 
         if (parent::isOptionRenderVerticalOn($input)) {
             $this->displayVerticalSearchResults($resquery, $output);
@@ -67,71 +66,47 @@ class SystemScimV2UsersCommand extends AirwatchCmd
         }
 
     }
-/*
-    protected function run_search($arSearchParams, InputInterface $input) : array
+
+    protected function run_search_custo($arSearchParams, InputInterface $input, $szContentType = 'application/scim+json;version=2') : array
     {
-        echo '==>';
-        $resquery = $this->_oAW->Search($arSearchParams);
+        $resquery = parent::run_search_custo($arSearchParams, $input, $szContentType);
 
-        //var_dump($resquery);exit;
-        if ( is_null($resquery['data']) )
-        {
-            echo "fuck off ?";
-            $arAllAppsWithInterestingFields=['data'];
-            $arAllAppsWithInterestingFields['data'] = [$this->_oAW->getFieldnameToPickInDataResultResponse()=>null];
-            return ($arAllAppsWithInterestingFields);
-        }
+        $resquery['data'][$this->_oAW->getFieldnameToPickInDataResultResponse()][0]['schemas'] =
+            implode( ','.PHP_EOL, json_decode($resquery['data'][$this->_oAW->getFieldnameToPickInDataResultResponse()][0]['schemas'] ) ) ;
 
+        $argrps = json_decode($resquery['data'][$this->_oAW->getFieldnameToPickInDataResultResponse()][0]['groups'],true);
+        $szgrps = '';
+        $ncpt = count($argrps[0]);
 
-        $arFieldsToDisplay = $this->_oAW->getDefaultFieldsToShow();
-        if ($this->isOptionShowAllFieldsOn($input)) {
-            $arFieldsToDisplay = $this->_oAW->getAllFieldsToShow();
-        }
-
-        $arAllAppsWithInterestingFields = [];
-
-        if (!is_null($resquery['data'][ $this->_oAW->getFieldnameToPickInDataResultResponse() ])) {
-
-
-            $arAllAppsWithInterestingFields['data'] = [ $this->_oAW->getFieldnameToPickInDataResultResponse() =>[]];
-
-            foreach ($resquery['data'][ $this->_oAW->getFieldnameToPickInDataResultResponse() ] as $arOneApp) {
-                $arOneAppWithInterestingFields = [];
-
-                foreach ($arFieldsToDisplay as $fieldName) {
-                    if (array_key_exists($fieldName, $arOneApp)) {
-                        if (is_array($arOneApp[$fieldName])) {
-                            $arOneAppWithInterestingFields[$fieldName] = $this->quicklyConvertArrayToString($arOneApp[$fieldName]);
-                        } else {
-                            $arOneAppWithInterestingFields[$fieldName] = $arOneApp[$fieldName];
-                        }
-                    } else {
-                        $arOneAppWithInterestingFields[$fieldName] = "N/A";
-                    }
-                }
-
-                if (array_key_exists('Id', $arOneApp) && is_array($arOneApp['Id']))
-                    $arOneAppWithInterestingFields['Id'] = $arOneApp['Id']['Value'];
-                else if (array_key_exists('ID', $arOneApp) && is_array($arOneApp['ID']))
-                    $arOneAppWithInterestingFields['ID'] = $arOneApp['ID']['Value'];
-                $arAllAppsWithInterestingFields['data'][ $this->_oAW->getFieldnameToPickInDataResultResponse() ][] = $arOneAppWithInterestingFields;
+        $i = 1;
+        foreach ($argrps[0] as $k => $val) {
+            $szgrps .= $k. ' = '.$val;
+            if ($i < $ncpt) {
+                $i++;
+                $szgrps .= ', '.PHP_EOL;
             }
-
-
-            $arAllAppsWithInterestingFields['data']['Page'] = null;
-            $arAllAppsWithInterestingFields['data']['PageSize'] = null;
-            $arAllAppsWithInterestingFields['data']['Total'] = null;
-            if (array_key_exists('Page', $resquery['data']))
-                $arAllAppsWithInterestingFields['data']['Page'] = $resquery['data']['Page'];
-            if (array_key_exists('PageSize', $resquery['data']))
-                $arAllAppsWithInterestingFields['data']['PageSize'] = $resquery['data']['PageSize'];
-            if (array_key_exists('PageSize', $resquery['data']))
-                $arAllAppsWithInterestingFields['data']['Total'] = $resquery['data']['Total'];
-
-
         }
-        return ( $arAllAppsWithInterestingFields );
+
+        $resquery['data'][$this->_oAW->getFieldnameToPickInDataResultResponse()][0]['groups'] = $szgrps;
+
+        $armeta = json_decode($resquery['data'][$this->_oAW->getFieldnameToPickInDataResultResponse()][0]['meta'], true);
+        $szmeta = '';
+
+        $ncpt = count($armeta);
+
+        $i = 1;
+        foreach ($armeta as $k => $val) {
+            $szmeta .= $k.' = '.$val;
+            if ($i < $ncpt) {
+                $i++;
+                $szmeta .= ','.PHP_EOL;
+            }
+        }
+
+        $resquery['data'][$this->_oAW->getFieldnameToPickInDataResultResponse()][0]['meta'] = $szmeta;
+
+        return ($resquery);
     }
-*/
+
 
 }

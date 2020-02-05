@@ -140,11 +140,11 @@ abstract class AirwatchCmd extends Command
     }
 
     /*
- * useful when workspaceone returns an array like array['data'][0][lots,of,entries],[1][lots,of,entries]
- */
-    protected function run_search_custo($arSearchParams, InputInterface $input) : array
+    * useful when workspaceone returns an array like array['data'][0][lots,of,entries],[1][lots,of,entries]
+    */
+    protected function run_search_custo($arSearchParams, InputInterface $input, $szContentType = 'application/json;version=1') : array
     {
-        $resquery = $this->_oAW->Search($arSearchParams);
+        $resquery = $this->_oAW->Search($arSearchParams, $szContentType);
 
         //var_dump( $resquery );exit;
         // so no getFieldnameToPickInDataResultResponse so far !
