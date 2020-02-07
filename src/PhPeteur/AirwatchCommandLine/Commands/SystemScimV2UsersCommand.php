@@ -14,6 +14,7 @@ use Symfony\Component\Console\Input\InputOption;
 use PhPeteur\AirwatchCommandLine\AirwatchCmd\AirwatchCmd;
 use PhPeteur\AirwatchWebservices\Services\AirwatchSystemScimV2Users;
 
+//awcmd system-scimv2-users --uuid 'e1d38318-3fc7-4834-b203-ed0110de1310' --rendervertical
 
 class SystemScimV2UsersCommand extends AirwatchCmd
 {

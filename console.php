@@ -78,6 +78,7 @@ use \PhPeteur\AirwatchCommandLine\Commands\SystemGroupAPNSUuidSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\MDMDeviceCommandsCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\MAMAppsApplestoreSearchCommand;
 use \PhPeteur\AirwatchCommandLine\Commands\SystemScimV2UsersCommand;
+use \PhPeteur\AirwatchCommandLine\Commands\SystemScimV2GroupsCommand;
 #//use \PhPeteur\Commands\MDMRelayServersSearchCommand;
 //use \PhPeteur\AirwatchCommandLine\Commands\AirwatchProdAppsInstalled;
 
@@ -165,6 +166,7 @@ $application->add(new SystemGroupAPNSUuidSearchCommand($cfg ));
 $application->add(new MDMDeviceCommandsCommand( $cfg ));
 $application->add(new MAMAppsApplestoreSearchCommand( $cfg ));
 $application->add(new SystemScimV2UsersCommand( $cfg ));
+$application->add(new SystemScimV2GroupsCommand( $cfg ));
 
 //$application->add(new AirwatchProdAppsInstalled($cfg));
 #//$application->add(new MDMRelayServersSearchCommand( $cfg ));
