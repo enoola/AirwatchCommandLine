@@ -8,6 +8,7 @@
 
 namespace PhPeteur\AirwatchCommandLine\Commands;
 
+use PhPeteur\AirwatchWebservices\Services\AirwatchServicesSearch;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -84,9 +85,9 @@ class MDMDeviceNetworkSearchCommand extends AirwatchCmd
     /*
  * to be implemented properly
  */
-    protected function run_search_custo($arSearchParams, InputInterface $input): array
+    protected function run_search_custo($arSearchParams, InputInterface $input, $szContent = AirwatchServicesSearch::HTTP_DEFAULT_CONTENT_TYPE): array
     {
-        $resquery = parent::run_search_custo($arSearchParams, $input);
+        $resquery = parent::run_search_custo($arSearchParams, $input, $szContent);
         //var_dump($resquery);
         /*
          *
